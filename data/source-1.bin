@@ -1,0 +1,8 @@
+{
+  "kind": "booking_page",
+  "id": "booking_page-A",
+  "revision": "v1",
+  "period": "2026-11-13",
+  "subject": "sample-A",
+  "state": "published"
+}

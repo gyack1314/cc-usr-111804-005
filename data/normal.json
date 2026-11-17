@@ -1,0 +1,33 @@
+{
+  "allowed_origins": [
+    "https://local-source-005.example.test"
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-005.example.test/records/booking_page-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-1.bin",
+        "status": 200,
+        "bytes": 149,
+        "sha256": "c75cc205e8cfeb496c2434ec1763ca467fccf76f1eb89c38e2baffed3b13254c"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-005.example.test/records/equipment_sheet-B",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-2.bin",
+        "status": 200,
+        "bytes": 153,
+        "sha256": "c0b954e5223e0315ce2e684ee5e9d0c3c1a95f7048daa4fcff6ddc6436d338ad"
+      }
+    }
+  ]
+}

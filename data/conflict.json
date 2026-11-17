@@ -1,0 +1,33 @@
+{
+  "allowed_origins": [
+    "https://local-source-005.example.test"
+  ],
+  "steps": [
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-005.example.test/records/booking_page-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-1.bin",
+        "status": 200,
+        "bytes": 149,
+        "sha256": "c75cc205e8cfeb496c2434ec1763ca467fccf76f1eb89c38e2baffed3b13254c"
+      }
+    },
+    {
+      "request": {
+        "method": "GET",
+        "url": "https://local-source-005.example.test/records/booking_page-A",
+        "body_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "response": {
+        "file": "source-conflict.bin",
+        "status": 200,
+        "bytes": 154,
+        "sha256": "3988f6dd990c29321b66aaf4bd285ec665a29a923adcd04cf3d9cd09e50df103"
+      }
+    }
+  ]
+}
