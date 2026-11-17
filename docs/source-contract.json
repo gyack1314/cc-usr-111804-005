@@ -1,0 +1,24 @@
+{
+  "roles": [
+    "booking_page",
+    "equipment_sheet"
+  ],
+  "relation_field": "session",
+  "required_fields": {
+    "booking_page": [
+      "session",
+      "zone",
+      "page_scope"
+    ],
+    "equipment_sheet": [
+      "session",
+      "zone",
+      "equipment"
+    ]
+  },
+  "source_identity": [
+    "kind",
+    "id",
+    "revision"
+  ]
+}

@@ -1,8 +1,10 @@
 {
   "kind": "equipment_sheet",
-  "id": "equipment_sheet-B",
+  "id": "equipment_sheet-A",
   "revision": "v1",
-  "period": "2026-11-13",
-  "subject": "sample-A",
-  "state": "pending"
+  "session": "lab-A",
+  "zone": "zone-1",
+  "equipment": [
+    "camera-1"
+  ]
 }
