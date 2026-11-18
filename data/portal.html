@@ -2,8 +2,8 @@
 <body><h1>设备清单资料</h1><button type="button" id="switch">切换</button>
 <div id="card">A 场设备表</div><pre id="state"></pre>
 <script>
-let state={"scope": "训练场次 A", "card_scope": "训练场次 A", "phase": "loaded", "card": {"kind": "booking_page", "id": "booking_page-A", "revision": "v1", "session": "lab-A", "zone": "zone-1", "page_scope": "lab-A"}};
-const next={"scope": "训练场次 B", "card_scope": "训练场次 B", "phase": "loaded", "card": {"kind": "equipment_sheet", "id": "equipment_sheet-A", "revision": "v2", "session": "lab-A", "zone": "zone-1", "equipment": ["camera-1"]}};
+let state={"scope": "训练场次 A", "card_scope": "训练场次 A", "phase": "loaded", "card": {"kind": "booking_page", "id": "booking_page-A", "revision": "v1", "session": "训练场次 A", "zone": "zone-1", "page_scope": "训练场次 A"}};
+const next={"scope": "训练场次 B", "card_scope": "训练场次 B", "phase": "loaded", "card": {"kind": "equipment_sheet", "id": "equipment_sheet-A", "revision": "v2", "session": "训练场次 B", "zone": "zone-1", "equipment": ["camera-1"]}};
 const show=()=>document.querySelector('#state').textContent=JSON.stringify(state);
 show();
 document.querySelector('#switch').onclick=()=>{
