@@ -1,9 +1,0 @@
-{
-  "sources": [
-    {
-      "scope": "训练场次 B",
-      "kind": "equipment_sheet",
-      "required": true
-    }
-  ]
-}
