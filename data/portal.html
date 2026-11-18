@@ -1,13 +1,14 @@
-<!doctype html><html lang="zh"><meta charset="utf-8"><title>训练场次演练页</title>
-<body><h1>训练场次资料</h1><button type="button" id="switch">切换</button>
-<div id="card">场次 A 设备表</div><pre id="state"></pre>
+<!doctype html><html lang="zh"><meta charset="utf-8"><title>设备清单演练页</title>
+<body><h1>设备清单资料</h1><button type="button" id="switch">切换</button>
+<div id="card">A 场设备表</div><pre id="state"></pre>
 <script>
-let state={scope:"场次 A",card_scope:"场次 A",phase:'loaded'};
+let state={"scope": "训练场次 A", "card_scope": "训练场次 A", "phase": "loaded", "card": {"kind": "booking_page", "id": "booking_page-A", "revision": "v1", "session": "lab-A", "zone": "zone-1", "page_scope": "lab-A"}};
+const next={"scope": "训练场次 B", "card_scope": "训练场次 B", "phase": "loaded", "card": {"kind": "equipment_sheet", "id": "equipment_sheet-A", "revision": "v2", "session": "lab-A", "zone": "zone-1", "equipment": ["camera-1"]}};
 const show=()=>document.querySelector('#state').textContent=JSON.stringify(state);
 show();
 document.querySelector('#switch').onclick=()=>{
-  state.scope="场次 B"; state.phase='pending'; show();
-  setTimeout(()=>{state.card_scope=state.scope; state.phase='loaded';
-    document.querySelector('#card').textContent="场次 B 设备表"; show();},300);
+  state.scope=next.scope; state.phase='pending'; show();
+  setTimeout(()=>{state=next;
+    document.querySelector('#card').textContent="B 场设备表"; show();},300);
 };
 </script></body></html>
