@@ -2,7 +2,7 @@
   "kind": "equipment_sheet",
   "id": "equipment_sheet-A",
   "revision": "v1",
-  "session": "lab-A",
+  "session": "训练场次 A",
   "zone": "zone-1",
   "equipment": [
     "camera-1"

@@ -2,7 +2,7 @@
   "kind": "booking_page",
   "id": "booking_page-A",
   "revision": "v1",
-  "session": "lab-A",
+  "session": "训练场次 A",
   "zone": "zone-1",
-  "page_scope": "lab-A"
+  "page_scope": "训练场次 A"
 }
