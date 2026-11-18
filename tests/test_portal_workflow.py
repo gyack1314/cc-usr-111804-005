@@ -1,4 +1,4 @@
-"""The initial portal capture connects to the ledger and durable progress."""
+"""初始门户采集接入账本与持久进度。"""
 import tempfile
 import unittest
 from pathlib import Path

@@ -1,4 +1,4 @@
-"""Record confirmed collection receipts for a portal scope."""
+"""记录门户范围内已确认的采集收据。"""
 def initialize(connection):
     connection.execute("""CREATE TABLE IF NOT EXISTS portal_progress (
       collection TEXT NOT NULL, scope TEXT NOT NULL, body_sha256 TEXT NOT NULL,

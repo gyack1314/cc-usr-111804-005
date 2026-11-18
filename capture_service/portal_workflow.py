@@ -1,4 +1,4 @@
-"""Collect the original stable portal scope into the existing source ledger."""
+"""将门户初始稳定范围接入现有来源账本。"""
 import hashlib
 import json
 from pathlib import Path
@@ -8,7 +8,7 @@ from .progress import record, receipts
 from .view import overview
 
 def collect_initial(connection, collection, page_path):
-    """Save only the original scope; a selected scope needs separate validation."""
+    """只保存初始范围；新选择的范围仍需另行核验。"""
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         try:
