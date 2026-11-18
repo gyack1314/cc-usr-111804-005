@@ -1,6 +1,6 @@
+"""记录门户范围内已确认的采集收据。"""
 from .ledger import entities
 from .domain import assess
-"""记录门户范围内已确认的采集收据。"""
 def initialize(connection):
     connection.execute("""CREATE TABLE IF NOT EXISTS portal_sources (
       collection TEXT NOT NULL, scope TEXT NOT NULL, card_kind TEXT NOT NULL,
@@ -50,8 +50,10 @@ def coverage(connection, collection):
     sources=[]
     for scope,kind,required,received in rows:
         source_hashes={r[0] for r in connection.execute(
-            'SELECT body_sha256 FROM portal_progress WHERE collection=? AND scope=?',
-            (collection,scope))}
+            'SELECT p.body_sha256 FROM portal_progress p JOIN entities e '
+            'ON e.collection=p.collection AND e.receipt_sha256=p.body_sha256 '
+            'AND e.entity_type=? WHERE p.collection=? AND p.scope=?',
+            (kind,collection,scope))}
         sources.append(dict(scope=scope,kind=kind,required=bool(required),
                             received_versions=received,verified=bool(source_hashes & verified)))
     return {'expected':len(rows),'received':sum(bool(row[3]) for row in rows),
