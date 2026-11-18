@@ -12,7 +12,7 @@ def release_verified(connection,collection):
     initialize(connection)
     current=overview(connection,collection)
     frontier=coverage(connection,collection)
-    if not current['publishable'] or not frontier['expected'] or frontier['missing_required']:
+    if not current['publishable'] or not frontier['expected'] or frontier['missing_required'] or frontier['unverified_required']:
         raise ValueError('门户资料仍有待核来源')
     revision=connection.execute('SELECT COALESCE(MAX(revision),0)+1 FROM released_views WHERE collection=?',(collection,)).fetchone()[0]
     with connection:

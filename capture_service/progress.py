@@ -1,3 +1,5 @@
+from .ledger import entities
+from .domain import assess
 """记录门户范围内已确认的采集收据。"""
 def initialize(connection):
     connection.execute("""CREATE TABLE IF NOT EXISTS portal_sources (
@@ -34,7 +36,7 @@ def receipts(connection, collection):
                 (collection,))]
 
 def coverage(connection, collection):
-    """按页面范围列出已采与待采卡片。"""
+    """Distinguish a stored portal receipt from a verified business source."""
     initialize(connection)
     rows=connection.execute(
         'SELECT s.scope,s.card_kind,s.required,COUNT(p.body_sha256) '
@@ -42,7 +44,18 @@ def coverage(connection, collection):
         'ON p.collection=s.collection AND p.scope=s.scope '
         'WHERE s.collection=? GROUP BY s.scope,s.card_kind,s.required ORDER BY s.scope,s.card_kind',
         (collection,)).fetchall()
+    view=assess(entities(connection,collection))
+    verified={source for pair in view['matched_pairs']
+              for source in (pair['left_source'],pair['right_source'])}
+    sources=[]
+    for scope,kind,required,received in rows:
+        source_hashes={r[0] for r in connection.execute(
+            'SELECT body_sha256 FROM portal_progress WHERE collection=? AND scope=?',
+            (collection,scope))}
+        sources.append(dict(scope=scope,kind=kind,required=bool(required),
+                            received_versions=received,verified=bool(source_hashes & verified)))
     return {'expected':len(rows),'received':sum(bool(row[3]) for row in rows),
             'missing_required':[dict(scope=row[0],kind=row[1]) for row in rows if row[2] and not row[3]],
-            'sources':[dict(scope=row[0],kind=row[1],required=bool(row[2]),received_versions=row[3])
-                       for row in rows]}
+            'unverified_required':[dict(scope=item['scope'],kind=item['kind']) for item in sources
+                                   if item['required'] and not item['verified']],
+            'sources':sources}
