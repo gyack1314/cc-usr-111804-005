@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "scope": "训练场次 A",
+      "kind": "booking_page",
+      "required": true
+    },
+    {
+      "scope": "训练场次 B",
+      "kind": "equipment_sheet",
+      "required": true
+    }
+  ]
+}

@@ -4,11 +4,13 @@ import json
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from .ledger import receive
-from .progress import record, receipts
+from .progress import record, receipts, register, coverage
 from .view import overview
 
 def collect_initial(connection, collection, page_path):
     """只保存初始范围；新选择的范围仍需另行核验。"""
+    expectation = json.loads((Path(page_path).parent / 'portal-sources.json').read_text(encoding='utf-8'))
+    register(connection,collection,expectation['sources'])
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True)
         try:
@@ -30,4 +32,5 @@ def collect_initial(connection, collection, page_path):
             browser.close()
     result = overview(connection, collection)
     result['portal_progress'] = receipts(connection, collection)
+    result['portal_coverage'] = coverage(connection, collection)
     return result
