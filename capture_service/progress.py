@@ -36,7 +36,7 @@ def receipts(connection, collection):
                 (collection,))]
 
 def coverage(connection, collection):
-    """Distinguish a stored portal receipt from a verified business source."""
+    """区分门户收据与已核实的业务资料来源。"""
     initialize(connection)
     rows=connection.execute(
         'SELECT s.scope,s.card_kind,s.required,COUNT(p.body_sha256) '
@@ -59,3 +59,4 @@ def coverage(connection, collection):
             'unverified_required':[dict(scope=item['scope'],kind=item['kind']) for item in sources
                                    if item['required'] and not item['verified']],
             'sources':sources}
+

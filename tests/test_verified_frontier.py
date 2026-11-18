@@ -1,4 +1,4 @@
-"""The first page receipt is not a completed portal business relation."""
+"""初始卡片收据不等于门户业务关系闭合。"""
 import tempfile
 import unittest
 from pathlib import Path
@@ -19,3 +19,4 @@ class VerifiedPortalFrontier(unittest.TestCase):
             self.assertEqual(len(result['unverified_required']),2)
             with self.assertRaises(ValueError):release_verified(c,'sample')
             c.close()
+
